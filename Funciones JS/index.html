@@ -29,11 +29,17 @@
         //    return resultado;
         //}
 
-        var suma = function(numero1, numero2){
-            return numero1 + numero2;
-        }
+//---------- Funcion basica con RETURN dentro de una variable        
+        //var suma = function(numero1, numero2){
+        //    return numero1 + numero2;
+        //}
+        //document.write(suma(8,7));
 
-        document.write(suma(8,7));
+
+//--------- Funcion autoinvocadas
+            (function(){
+                alert('Hola Mundo');
+            }());
     </script>
 </body>
 </html>
