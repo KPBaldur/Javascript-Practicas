@@ -1,1 +1,2 @@
-alert('Oye mami empresta los Cachetes')
+const parrafo =  document.getElementById('text')
+console.log(parrafo.innerHTML)
