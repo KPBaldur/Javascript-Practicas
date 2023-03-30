@@ -9,9 +9,11 @@ window.onload = () => {
         todo.value = '';
         todos.push(todoText);
         const todoList = document.getElementById('todo-list');
+        
+        /* FUNCION DE AGREGAR A LA LISTA CON innerHTML y for
         todoList.innerHTML = '';
         for(let i = 0; i < todos.length; i++) {
-            todoList.innerHTML += '<li>' + todos[i] + '</li>';
-        }
+            todoList.innerHTML += '<li>' + todos[i] + '</li>'; 
+        } */
     }
 }
