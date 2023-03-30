@@ -11,7 +11,12 @@ window.onload = () => {
         const todoList = document.getElementById('todo-list');
         const todosTemplate = todos.map(t => '<li>' + t + '</li>');
         todoList.innerHTML = todosTemplate.join('');
+        const elementos = document.querySelectorAll('#todo-list li')
+        elementos.forEach((elemento, i) => {
+            elemento.addEventListener('click', () => {
 
+            })
+        })
 
         /* FUNCION DE AGREGAR A LA LISTA CON innerHTML y for
         todoList.innerHTML = '';
