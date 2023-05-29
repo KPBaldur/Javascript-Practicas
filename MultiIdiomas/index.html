@@ -6,12 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal</title>
 </head>
+<style>
+    .espanol {
+        display: block;
+    }
+
+    .ingles {
+        display: none;
+    }
+
+</style>
 <body>
-    <span class="en">English</span>
-    <input type="checkbox" class="check">
-    <span>Spanish</span>
-    <h1>Title</h1>
-    <p>Hello Word!</p>
-</body>
-<script src="main.js"></script>
+    <h2 class="h2-espanol">Hola, mundo!</h2>
+<h3 class="h2-espanol">Hola, mundo</h3>
+<p class="h2-espanol">Hola, mundito!</p>
+
+<h2 class="h2-ingles" style="display: none;">Hello, world!</h2>
+<h3 class="h2-ingles" style="display: none;">Hello, world!</h3>
+<p class="h2-ingles" style="display: none;">Hello, world!</p>
+
+<a href="#" class="idioma-espanol" style="display: none;">Español</a>
+<a href="#" class="idioma-ingles">Inglés</a>
+
+<script>
+  // Obtén los elementos por sus clases
+  const h2Espanol = document.querySelectorAll('#h2-espanol');
+  const h2Ingles = document.querySelectorAll('#h2-ingles');
+
+  const linkEspanol = document.querySelector('.idioma-espanol');
+  const linkIngles = document.querySelector('.idioma-ingles');
+
+  // Agrega los event listeners a los enlaces
+  linkEspanol.addEventListener('click', () => {
+    // Oculta los elementos en inglés y muestra los elementos en español
+    h2Ingles.forEach((element) => {
+      element.style.display = 'none';
+    });
+    h2Espanol.forEach((element) => {
+      element.style.display = 'block';
+    });
+
+    // Oculta el enlace de español y muestra el enlace de inglés
+    linkIngles.style.display = 'inline';
+    linkEspanol.style.display = 'none';
+  });
+
+  linkIngles.addEventListener('click', () => {
+    // Oculta los elementos en español y muestra los elementos en inglés
+    h2Espanol.forEach((element) => {
+      element.style.display = 'none';
+    });
+    h2Ingles.forEach((element) => {
+      element.style.display = 'block';
+    });
+
+    // Oculta el enlace de inglés y muestra el enlace de español
+    linkEspanol.style.display = 'inline';
+    linkIngles.style.display = 'none';
+  });
+</script>
+
+
+    
 </html>
