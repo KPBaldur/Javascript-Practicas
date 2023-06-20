@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic Tac Toe</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+
+        table, td {
+            border: 1px solid black;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic Tac Toe</h1>
+    <table id="board">
+        <tr>
+            <td onclick="makeMove(0, 0)"></td>
+            <td onclick="makeMove(0, 1)"></td>
+            <td onclick="makeMove(0, 2)"></td>
+        </tr>
+        <tr>
+            <td onclick="makeMove(1, 0)"></td>
+            <td onclick="makeMove(1, 1)"></td>
+            <td onclick="makeMove(1, 2)"></td>
+        </tr>
+        <tr>
+            <td onclick="makeMove(2, 0)"></td>
+            <td onclick="makeMove(2, 1)"></td>
+            <td onclick="makeMove(2, 2)"></td>
+        </tr>
+    </table>
+    <h2 id="status"></h2>
+    <h3>Scores:</h3>
+    <p id="player1Score">Player 1: 0</p>
+    <p id="player2Score">Player 2: 0</p>
+
+    <script>
+        var currentPlayer = 1;
+        var player1Score = 0;
+        var player2Score = 0;
+        var board = [
+            [0, 0, 0],
+            [0, 0, 0],
+            [0, 0, 0]
+        ];
+
+        function makeMove(row, col) {
+            if (board[row][col] === 0) {
+                board[row][col] = currentPlayer;
+                document.getElementById("board").rows[row].cells[col].innerText = currentPlayer === 1 ? "X" : "O";
+
+                if (checkWin(currentPlayer)) {
+                    document.getElementById("status").innerText = "Player " + currentPlayer + " wins!";
+                    if (currentPlayer === 1) {
+                        player1Score++;
+                        document.getElementById("player1Score").innerText = "Player 1: " + player1Score;
+                    } else {
+                        player2Score++;
+                        document.getElementById("player2Score").innerText = "Player 2: " + player2Score;
+                    }
+                    resetBoard();
+                } else if (checkDraw()) {
+                    document.getElementById("status").innerText = "It's a draw!";
+                    resetBoard();
+                } else {
+                    currentPlayer = currentPlayer === 1 ? 2 : 1;
+                }
+            }
+        }
+
+        function checkWin(player) {
+            for (var i = 0; i < 3; i++) {
+                if (
+                    (board[i][0] === player && board[i][1] === player && board[i][2] === player) ||
+                    (board[0][i] === player && board[1][i] === player && board[2][i] === player)
+                ) {
+                    return true;
+                }
+            }
+
+            if (
+                (board[0][0] === player && board[1][1] === player && board[2][2] === player) ||
+                (board[0][2] === player && board[1][1] === player && board[2][0] === player)
+            ) {
+                return true;
+            }
+
+            return false;
+        }
+
+        function checkDraw() {
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    if (board[i][j] === 0) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        function resetBoard() {
+            board = [
+                [0, 0, 0],
+                [0, 0, 0],
+                [0, 0, 0]
+            ];
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    document.getElementById("board").rows[i].cells[j].innerText = "";
+                }
+            }
+            document.getElementById("status").innerText = "";
+        }
+    </script>
+</body>
+</html>
